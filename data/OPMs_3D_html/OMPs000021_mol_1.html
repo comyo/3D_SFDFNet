@@ -1,0 +1,46 @@
+<div id="3dmolviewer_17579080253338695"  style="position: relative; width: 400px; height: 400px;">
+        <p id="3dmolwarning_17579080253338695" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdn.jsdelivr.net/npm/3dmol@2.5.2/build/3Dmol-min.js');
+}
+
+var viewer_17579080253338695 = null;
+var warn = document.getElementById("3dmolwarning_17579080253338695");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_17579080253338695 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17579080253338695"),{backgroundColor:"white"});
+viewer_17579080253338695.zoomTo();
+	viewer_17579080253338695.addModel("OMPs000021\n     RDKit          3D\n\n  7  6  0  0  0  0  0  0  0  0999 V2000\n    1.4191   -0.3693    0.5306 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.0044   -0.0898    0.2473 B   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7806   -1.2376   -0.2357 O   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.3051    1.1684   -0.4536 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.8858   -0.3246   -0.3349 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.7055   -1.0462    0.0841 H   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.5182    1.8992    0.1621 H   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  1  0\n  2  4  1  0\n  1  5  1  0\n  3  6  1  0\n  4  7  1  0\nM  END\n","sdf");
+	viewer_17579080253338695.setStyle({"stick": {}, "sphere": {"scale": 0.3}});
+	viewer_17579080253338695.zoomTo();
+viewer_17579080253338695.render();
+});
+</script>
