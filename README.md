@@ -36,6 +36,3 @@ The dataset supporting this research is available on Kaggle:
 * 3D molecular conformation data for various OMPs.
 * Membrane physicochemical parameters and experimental operating conditions.
 
-
-# It is recommended to create a virtual environment
-pip install -r requirements.txt
